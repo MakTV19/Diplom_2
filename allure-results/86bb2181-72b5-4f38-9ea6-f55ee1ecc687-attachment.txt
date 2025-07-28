@@ -1,0 +1,2 @@
+Warning: Failed to delete test user. Status code: 202
+Response: {"success":true,"message":"User successfully removed"}
