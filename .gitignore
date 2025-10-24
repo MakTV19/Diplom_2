@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.env
+
+# Pytest
+.pytest_cache/
+*.pytest_cache
+
+# Allure reports
+reports/
+allure-report/
+allure-report.zip
+
+# IDE settings
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Other
+*.zip
+*.tar.gz
+*.tgz
