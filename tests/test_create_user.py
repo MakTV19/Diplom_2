@@ -3,10 +3,6 @@ import requests
 import allure
 from data.urls import Urls
 
-
-
-
-
 class TestCreateUser:
     @allure.title("Создание уникального пользователя")
     def test_create_unique_user(self, user_data):
@@ -18,13 +14,13 @@ class TestCreateUser:
         assert response.json()["user"]["email"] == user_data["email"]
         assert response.json()["user"]["name"] == user_data["name"]
 
-        # Удаляем созданного пользователя
-        token = response.json().get("accessToken")
-        requests.delete(Urls.USER, headers={"Authorization": token})
-
     @allure.title("Создание уже существующего пользователя")
-    def test_create_existing_user(self, create_user, user_data):
-        response = requests.post(Urls.REGISTER, json=user_data)
+    def test_create_existing_user(self, create_user):
+        response = requests.post(Urls.REGISTER, json={
+            "email": create_user["email"],
+            "password": create_user["password"], 
+            "name": create_user["name"]
+        })
         assert response.status_code == 403
         assert response.json() == {
             "success": False,
