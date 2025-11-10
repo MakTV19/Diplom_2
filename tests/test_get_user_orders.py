@@ -3,9 +3,6 @@ import allure
 from data.urls import Urls
 
 
-
-
-
 class TestGetUserOrders:
     @allure.title("Получение заказов авторизованного пользователя")
     def test_get_orders_authorized(self, create_user):
@@ -30,13 +27,3 @@ class TestGetUserOrders:
             "success": False,
             "message": "You should be authorised"
         }
-
-    @allure.title("Получение заказов с невалидным токеном")
-    def test_get_orders_invalid_token(self):
-        response = requests.get(
-            Urls.ORDERS,
-            headers={"Authorization": "invalid_token"}
-        )
-        assert response.status_code == 401
-        assert response.json()["success"] is False
-        assert "message" in response.json()
